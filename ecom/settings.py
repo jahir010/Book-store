@@ -29,6 +29,7 @@ SECRET_KEY = "django-insecure-#!$8jy8uf^9ae=v@t8_3(w0tjw#w5)&#xay*0ic40giq%yxhdg
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = []
 
 
 # Application definition
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     "store",
     "cart",
     "payment",
+    "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "ecom.urls"
@@ -88,8 +91,8 @@ DATABASES = {
         "NAME": "railway",
         "USER": "postgres",
         "PASSWORD": os.environ.get("DB_PASSWORD_YO"),
-        "HOST": "postgres.railway.internal",
-        "PORT": "5432",
+        "HOST": "monorail.proxy.rlwy.net",
+        "PORT": "30876",
     }
 }
 
@@ -130,6 +133,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = ['static/']
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
