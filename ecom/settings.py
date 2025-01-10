@@ -28,8 +28,8 @@ SECRET_KEY = "django-insecure-#!$8jy8uf^9ae=v@t8_3(w0tjw#w5)&#xay*0ic40giq%yxhdg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = []
+ALLOWED_HOSTS = ["book-store-production-b119.up.railway.app", "https://book-store-production-b119.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["book-store-production-b119.up.railway.app", "https://book-store-production-b119.up.railway.app"]
 
 
 # Application definition
